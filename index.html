@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEase Pro - E-commerce Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- START / PASSWORD SCREEN -->
+    <div id="startScreen" class="start-screen">
+      <div class="start-box">
+        <h1>ShopEase Pro</h1>
+        <p>Enter password to open the website</p>
+        <input type="password" id="sitePassword" placeholder="Enter password">
+        <button class="primary" onclick="unlockSite()">Unlock Website</button>
+        <p class="small" id="startMsg" style="margin-top:10px"></p>
+      </div>
+    </div>
+
+    <!-- MAIN WEBSITE -->
+    <div id="mainApp" style="display:none;">
+      <header>
+        <div style="display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;">
+          <img
+            src="https://www.clipartmax.com/png/middle/147-1471121_aktu-logo-dr-a-p-j-abdul-kalam-technical-university.png"
+            alt="AKTU Logo"
+            style="width:75px;height:74px;object-fit:contain;background:#fff;border-radius:12px;padding:6px;"
+          >
+          <div>
+            <h1>ShopEase SCSS Pro</h1>
+            <p>Final Year E-commerce Website Project</p>
+          </div>
+        </div>
+      </header>
+
+      <nav>
+        <a href="#products">Products</a>
+        <a href="#cart">Cart</a>
+        <a href="#checkout">Checkout</a>
+        <a href="#orders">Orders</a>
+        <a href="#database">Database</a>
+        <a href="about.html">About</a>
+        <span id="userInfo" style="color:#fff;margin-left:10px;"></span>
+        <button onclick="openLogin()">Login</button>
+        <button onclick="openSignup()">Signup</button>
+        <button onclick="toggleAdmin()">Admin Panel</button>
+        <button onclick="logout()">Logout</button>
+        <button onclick="toggleDarkMode()">🌙 Dark</button>
+      </nav>
+
+      <!-- OFFER BANNER -->
+      <div id="offerBanner" class="section" style="display:none;margin:20px auto;max-width:1200px;background:#fff7ed;border:1px solid #fed7aa;">
+        <strong>🔥 Special Offer:</strong> Today only, get extra 10% off on orders above ₹5000.
+      </div>
+
+      <section class="hero">
+        <span class="badge">SHOP HAPPILY WITH ShopEase Pro</span>
+        <h2>Modern Online Store</h2>
+        <p>
+          A complete student project website with login, signup, product search, shopping cart,
+          checkout, admin panel, order history, and a database-style product table.
+        </p>
+      </section>
+
+      <div class="container">
+        <section id="products">
+          <div class="toolbar">
+            <h2>Products</h2>
+            <div class="toolbar-group">
+              <div class="search">
+                <input id="search" placeholder="Search products..." oninput="renderProducts()">
+              </div>
+              <select id="filterStock" onchange="renderProducts()">
+                <option value="all">All Stock</option>
+                <option value="instock">In Stock</option>
+                <option value="lowstock">Low Stock</option>
+              </select>
+            </div>
+          </div>
+          <div class="grid" id="productGrid"></div>
+        </section>
+
+        <section class="section" id="cart">
+          <h2>Your Cart</h2>
+          <div id="cartItems"></div>
+          <div class="footer-grid">
+            <div class="stat"><h3>₹<span id="total">0</span></h3><p>Cart Total</p></div>
+            <div class="stat"><h3 id="itemCount">0</h3><p>Total Items</p></div>
+            <div class="stat"><h3>24/7</h3><p>Customer Support</p></div>
+          </div>
+        </section>
+
+        <section class="section" id="checkout">
+          <h2>Checkout</h2>
+          <div class="row">
+            <div><input id="custName" placeholder="Full Name"></div>
+            <div><input id="custMobile" placeholder="Mobile Number"></div>
+            <div><textarea id="custAddress" rows="4" placeholder="Address"></textarea></div>
+            <div>
+              <select id="paymentMethod" onchange="togglePaymentFields()">
+                <option value="cod">Cash on Delivery</option>
+                <option value="upi">UPI / QR</option>
+                <option value="card">Debit / Credit Card</option>
+                <option value="netbanking">Net Banking</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="upiBox" class="section" style="margin-top:14px;display:none;background:#f8fafc">
+            <h3>UPI Payment</h3>
+            <p class="small">Demo QR / UPI ID area for project presentation.</p>
+            <div class="row" style="margin-top:10px">
+              <div><input id="upiId" placeholder="UPI ID (demo@upi)"></div>
+              <div><input id="upiTxnId" placeholder="UTR / Transaction ID"></div>
+            </div>
+          </div>
+
+          <div id="cardBox" class="section" style="margin-top:14px;display:none;background:#f8fafc">
+            <h3>Card Payment</h3>
+            <div class="row" style="margin-top:10px">
+              <div><input id="cardNumber" placeholder="Card Number"></div>
+              <div><input id="cardHolder" placeholder="Card Holder Name"></div>
+              <div><input id="cardExpiry" placeholder="Expiry MM/YY"></div>
+              <div><input id="cardCvv" placeholder="CVV"></div>
+            </div>
+          </div>
+
+          <div id="netBankingBox" class="section" style="margin-top:14px;display:none;background:#f8fafc">
+            <h3>Net Banking</h3>
+            <p class="small">Choose any bank option for demo purposes.</p>
+            <div class="row" style="margin-top:10px">
+              <div>
+                <select id="bankName">
+                  <option>SBI</option>
+                  <option>HDFC</option>
+                  <option>ICICI</option>
+                  <option>PNB</option>
+                </select>
+              </div>
+              <div><input id="customerId" placeholder="Customer ID"></div>
+            </div>
+          </div>
+
+          <br>
+          <button class="primary" onclick="placeOrder()">Place Order</button>
+          <p class="small" id="orderMsg" style="margin-top:10px"></p>
+        </section>
+
+        <section class="section" id="orders">
+          <h2>Order History</h2>
+          <div id="ordersList" class="small">No orders yet.</div>
+        </section>
+
+        <section class="section" id="database">
+          <h2>Database Look (Product Records)</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>ID</th><th>Name</th><th>Price</th><th>Stock</th><th>Status</th></tr>
+              </thead>
+              <tbody id="dbRows"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="section hidden" id="adminPanel">
+          <h2>Admin Panel</h2>
+          <div class="row">
+            <div>
+              <h3>Add Product</h3>
+              <input id="adminName" placeholder="Product name" style="margin-bottom:10px">
+              <input id="adminPrice" placeholder="Price" style="margin-bottom:10px">
+              <input id="adminStock" placeholder="Stock" style="margin-bottom:10px">
+              <button class="primary" onclick="addProduct()">Add Product</button>
+            </div>
+            <div>
+              <h3>Admin Stats</h3>
+              <div class="footer-grid">
+                <div class="stat"><h3 id="productCount">0</h3><p>Total Products</p></div>
+                <div class="stat"><h3 id="orderCount">0</h3><p>Total Orders</p></div>
+                <div class="stat"><h3 id="revenue">₹0</h3><p>Revenue</p></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>PHP / MySQL Backend Integration Area</h2>
+          <p class="small">
+            This page is frontend-only and can be connected to PHP/MySQL by creating separate files like
+            <strong>db.php</strong>, <strong>login.php</strong>, <strong>signup.php</strong>, <strong>save_order.php</strong>, and <strong>products.php</strong>.
+            For project presentation, this layout already shows where backend data will appear.
+          </p>
+        </section>
+      </div>
+
+      <footer>
+        © 2026 ShopEase Pro | Developed by Student Project
+      </footer>
+
+      <div class="modal" id="loginModal">
+        <div class="modal-content">
+          <h2>Login</h2>
+          <p class="small">Demo login form for project use</p>
+          <br>
+          <input id="loginEmail" placeholder="Email">
+          <br><br>
+          <input id="loginPass" type="password" placeholder="Password">
+          <br><br>
+          <button class="primary" onclick="login()">Login</button>
+          <button class="soft" onclick="closeLogin()">Close</button>
+          <p class="small" id="loginMsg" style="margin-top:10px"></p>
+        </div>
+      </div>
+
+      <div class="modal" id="signupModal">
+        <div class="modal-content">
+          <h2>Signup</h2>
+          <p class="small">Create new account</p>
+          <br>
+          <input id="signupName" placeholder="Full Name">
+          <br><br>
+          <input id="signupEmail" placeholder="Email">
+          <br><br>
+          <input id="signupPass" type="password" placeholder="Password">
+          <br><br>
+          <button class="primary" onclick="signup()">Create Account</button>
+          <button class="soft" onclick="closeSignup()">Close</button>
+          <p class="small" id="signupMsg" style="margin-top:10px"></p>
+        </div>
+      </div>
+
+      <div class="modal" id="paymentModal">
+        <div class="modal-content">
+          <h2>Payment Gateway</h2>
+          <p class="small">Demo confirmation screen</p>
+          <br>
+          <div class="section" style="margin-top:0;background:#f8fafc">
+            <p><strong>Amount:</strong> ₹<span id="payAmount">0</span></p>
+            <p><strong>Method:</strong> <span id="payMethodText">COD</span></p>
+          </div>
+          <br>
+          <button class="primary" onclick="confirmPayment()">Pay Now</button>
+          <button class="soft" onclick="closePayment()">Cancel</button>
+          <p class="small" id="paymentMsg" style="margin-top:10px"></p>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="backend.js"></script>
+</body>
+</html>

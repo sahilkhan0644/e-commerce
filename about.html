@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About - ShopEase Pro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>ShopEase Pro</h1>
+  <p>About & Contact Page</p>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<div class="container">
+
+  <!-- ABOUT SECTION -->
+  <section class="section" id="about">
+    <h2>About Project</h2>
+    <p>
+      ShopEase Pro is a modern e-commerce website developed as a final year project.
+      It includes features like login system, cart, checkout, admin panel, and database view.
+    </p>
+
+    <br>
+
+    <p>
+      This project is built using HTML, CSS, and JavaScript and can be connected to PHP/MySQL backend.
+    </p>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section">
+    <h2>Features</h2>
+    <ul>
+      <li>✔ User Login & Signup</li>
+      <li>✔ Product Search & Filter</li>
+      <li>✔ Shopping Cart</li>
+      <li>✔ Checkout System</li>
+      <li>✔ Admin Panel</li>
+      <li>✔ Dark Mode</li>
+    </ul>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <h2>Contact Us</h2>
+
+    <input placeholder="Your Name">
+    <br><br>
+
+    <input placeholder="Your Email">
+    <br><br>
+
+    <textarea rows="4" placeholder="Your Message"></textarea>
+    <br><br>
+
+    <button class="primary" onclick="sendMessage()">Send Message</button>
+
+    <p id="msg" class="small" style="margin-top:10px;"></p>
+  </section>
+
+</div>
+
+<footer>
+  © 2026 ShopEase Pro | Student Project
+</footer>
+
+<script>
+function sendMessage(){
+  document.getElementById("msg").innerText = "Message sent successfully (demo)";
+}
+</script>
+
+</body>
+</html>
