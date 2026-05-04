@@ -1,12 +1,12 @@
 let products = [
   { id: 1, name: 'Sports Shoes', price: 2499, stock: 10, img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff' },
-  { id: 2, name: 'Smart Watch', price: 3999, stock: 8, img: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d' },
+ { id: 2, name: 'Guiters', price: 3999, stock: 8, img: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d' },
   { id: 3, name: 'Headphones', price: 1999, stock: 12, img: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e' },
   { id: 4, name: 'Backpack', price: 1599, stock: 7, img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62' },
   { id: 5, name: 'T-Shirt', price: 799, stock: 20, img: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab' },
   { id: 6, name: 'Sunglasses', price: 1299, stock: 15, img: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083' },
   { id: 7, name: 'Laptop Bag', price: 1899, stock: 9, img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff' },
-  { id: 8, name: 'Bluetooth Speaker', price: 2499, stock: 11, img: 'https://images.unsplash.com/photo-1518441314328-4f3a6b8f1f4a' },
+  { id: 8, name: 'Bluetooth Speaker', price: 2499, stock: 11, img: 'https://images.unsplash.com/photo-1589003077984-894e133dabab' },
   { id: 9, name: 'Running Socks', price: 499, stock: 30, img: 'https://images.unsplash.com/photo-1586350977771-b3b0abd50c82' },
   { id: 10, name: 'Cap', price: 599, stock: 25, img: 'https://images.unsplash.com/photo-1521369909029-2afed882baee' }
 ];
